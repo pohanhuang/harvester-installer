@@ -1,4 +1,4 @@
-name: Bump golang version
+name: Updatecli
 
 on:
   workflow_dispatch:
@@ -25,11 +25,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.HARVESTER_TOKEN }}
         run: |
-          updatecli compose diff --file updatecli/compose-golang-version.yaml
+          updatecli compose diff --file updatecli/updatecli-compose.yaml
 
       - name: Apply
         if: github.ref == 'refs/heads/master'
         env:
           GITHUB_TOKEN: ${{ secrets.HARVESTER_TOKEN }}
         run: |
-          updatecli compose apply --file updatecli/compose-golang-version.yaml
+          updatecli compose apply --file updatecli/updatecli-compose.yaml
