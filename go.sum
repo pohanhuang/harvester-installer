@@ -579,8 +579,8 @@ github.com/rancher/mapper v0.0.0-20190814232720-058a8b7feb99 h1:rGnt9h1Uk7Yw4qNP
 github.com/rancher/mapper v0.0.0-20190814232720-058a8b7feb99/go.mod h1:zU4cm21k7ZBFVQhUu2aSH7NwouY317rLYxruOn+wdOQ=
 github.com/rancher/wharfie v0.6.8 h1:4c+c5GS9ZziEsQHkzTRTKdumvufai9izInT88cJK0Q0=
 github.com/rancher/wharfie v0.6.8/go.mod h1:ew49A9PzRsTngdzXIkgakfhMq3mHMA650HS1OVQpaNA=
-github.com/rancher/wrangler v1.1.1 h1:wmqUwqc2M7ADfXnBCJTFkTB5ZREWpD78rnZMzmxwMvM=
-github.com/rancher/wrangler v1.1.1/go.mod h1:ioVbKupzcBOdzsl55MvEDN0R1wdGggj8iNCYGFI5JvM=
+github.com/rancher/wrangler v1.1.2 h1:oXbXo9k7y/H4drUpb4RM1c++vT9O3rpoNEfyusGykiU=
+github.com/rancher/wrangler v1.1.2/go.mod h1:2k9MyhlBdjcutcBGoOJSUAz0HgDAXnMjv81d3n/AaQc=
 github.com/rancher/yip v1.9.2 h1:AddaE7/J5eUgeMeW5mlB7JtNCafqVt78aZgg1CE+cfk=
 github.com/rancher/yip v1.9.2/go.mod h1:acOitsP+8zVDhxM36mDePxpT+SXhK66GxW5Vgg3lw2Y=
 github.com/rivo/uniseg v0.2.0/go.mod h1:J6wj4VEh+S6ZtnVlnTBMWIodfgj8LQOQFoIToxlJtxc=
