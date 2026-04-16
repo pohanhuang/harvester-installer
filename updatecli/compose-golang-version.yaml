@@ -1,4 +1,0 @@
-Name: Update Go version
-policies:
-  - name: Update Go version
-    policy: ghcr.io/pohanhuang/harvester/golang/version:0.1.3
