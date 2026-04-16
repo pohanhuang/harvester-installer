@@ -11,12 +11,12 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/rancher/mapper v0.0.0-20190814232720-058a8b7feb99
 	github.com/rancher/wharfie v0.6.8
-	github.com/rancher/yip v1.9.2
-	github.com/sirupsen/logrus v1.9.3
+	github.com/rancher/yip v1.9.6
+	github.com/sirupsen/logrus v1.9.4-0.20230606125235-dd1b4c2e81af
 	github.com/stretchr/testify v1.10.0
 	github.com/tredoe/osutil v1.5.0
 	github.com/urfave/cli/v3 v3.4.1
-	github.com/vishvananda/netlink v1.2.1-beta.2
+	github.com/vishvananda/netlink v1.3.0
 	golang.org/x/crypto v0.31.0
 	golang.org/x/net v0.33.0
 	golang.org/x/sys v0.28.0
@@ -43,7 +43,7 @@ require (
 	github.com/itchyny/gojq v0.12.16 // indirect
 	github.com/itchyny/timefmt-go v0.1.6 // indirect
 	github.com/josharian/native v1.1.0 // indirect
-	github.com/klauspost/compress v1.16.5 // indirect
+	github.com/klauspost/compress v1.17.9 // indirect
 	github.com/mattn/go-runewidth v0.0.15 // indirect
 	github.com/mattn/go-shellwords v1.0.10 // indirect
 	github.com/mdlayher/packet v1.1.2 // indirect
