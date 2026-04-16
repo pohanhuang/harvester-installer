@@ -12,7 +12,7 @@ require (
 	github.com/rancher/mapper v0.0.0-20190814232720-058a8b7feb99
 	github.com/rancher/wharfie v0.6.8
 	github.com/rancher/yip v1.9.2
-	github.com/sirupsen/logrus v1.9.3
+	github.com/sirupsen/logrus v1.9.4
 	github.com/stretchr/testify v1.10.0
 	github.com/tredoe/osutil v1.5.0
 	github.com/urfave/cli/v3 v3.4.1
