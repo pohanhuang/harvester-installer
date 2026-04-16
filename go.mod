@@ -3,7 +3,7 @@ module github.com/harvester/harvester-installer
 go 1.25
 
 require (
-	github.com/dell/goiscsi v1.9.0
+	github.com/dell/goiscsi v1.14.0
 	github.com/harvester/go-common v0.0.0-20230718010724-11313421a8f5
 	github.com/imdario/mergo v0.3.16
 	github.com/insomniacslk/dhcp v0.0.0-20240710054256-ddd8a41251c9

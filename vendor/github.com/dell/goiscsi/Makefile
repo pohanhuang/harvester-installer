@@ -1,5 +1,5 @@
 #
-# Copyright © 2019-2022 Dell Inc. or its subsidiaries. All Rights Reserved.
+# Copyright © 2019-2025 Dell Inc. or its subsidiaries. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ mock-test:
 	go clean -cache
 	go test -v -coverprofile=c.out --run=TestMock
 
-int-test: 
+int-test:
 	GOISCSI_PORTAL=$(Portal) GOISCSI_TARGET=$(Target)  \
 		 go test -v -timeout 20m -coverprofile=c.out -coverpkg ./...
 
