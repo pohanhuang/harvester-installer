@@ -95,8 +95,8 @@ github.com/josharian/native
 # github.com/jroimartin/gocui v0.4.0
 ## explicit
 github.com/jroimartin/gocui
-# github.com/klauspost/compress v1.16.5
-## explicit; go 1.18
+# github.com/klauspost/compress v1.17.9
+## explicit; go 1.20
 github.com/klauspost/compress
 github.com/klauspost/compress/fse
 github.com/klauspost/compress/huff0
@@ -155,14 +155,14 @@ github.com/rancher/wharfie/pkg/registries
 # github.com/rancher/wrangler v0.0.0-20190426050201-5946f0eaed19 => github.com/rancher/wrangler v1.1.1
 ## explicit; go 1.19
 github.com/rancher/wrangler/pkg/name
-# github.com/rancher/yip v1.9.2
-## explicit; go 1.21
+# github.com/rancher/yip v1.9.6
+## explicit; go 1.22.0
 github.com/rancher/yip/pkg/schema
 github.com/rancher/yip/pkg/schema/cloudinit
 # github.com/rivo/uniseg v0.4.7
 ## explicit; go 1.18
 github.com/rivo/uniseg
-# github.com/sirupsen/logrus v1.9.3
+# github.com/sirupsen/logrus v1.9.4-0.20230606125235-dd1b4c2e81af
 ## explicit; go 1.13
 github.com/sirupsen/logrus
 # github.com/stretchr/testify v1.10.0
@@ -191,7 +191,7 @@ github.com/urfave/cli/v3
 # github.com/vbatts/tar-split v0.11.3
 ## explicit; go 1.15
 github.com/vbatts/tar-split/archive/tar
-# github.com/vishvananda/netlink v1.2.1-beta.2
+# github.com/vishvananda/netlink v1.3.0
 ## explicit; go 1.12
 github.com/vishvananda/netlink
 github.com/vishvananda/netlink/nl
