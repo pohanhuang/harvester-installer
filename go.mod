@@ -1,6 +1,6 @@
 module github.com/harvester/harvester-installer
 
-go 1.25
+go 1.26.0
 
 require (
 	github.com/dell/goiscsi v1.9.0
@@ -13,16 +13,16 @@ require (
 	github.com/rancher/wharfie v0.6.8
 	github.com/rancher/yip v1.9.2
 	github.com/sirupsen/logrus v1.9.3
-	github.com/stretchr/testify v1.10.0
+	github.com/stretchr/testify v1.11.1
 	github.com/tredoe/osutil v1.5.0
 	github.com/urfave/cli/v3 v3.4.1
 	github.com/vishvananda/netlink v1.2.1-beta.2
-	golang.org/x/crypto v0.31.0
-	golang.org/x/net v0.33.0
-	golang.org/x/sys v0.28.0
+	golang.org/x/crypto v0.47.0
+	golang.org/x/net v0.49.0
+	golang.org/x/sys v0.40.0
 	gopkg.in/ini.v1 v1.67.0
 	gopkg.in/yaml.v3 v3.0.1
-	k8s.io/apimachinery v0.32.6
+	k8s.io/apimachinery v0.36.0
 )
 
 require (
@@ -35,6 +35,7 @@ require (
 	github.com/docker/go-units v0.5.0 // indirect
 	github.com/fsnotify/fsnotify v1.7.0 // indirect
 	github.com/ghodss/yaml v1.0.0 // indirect
+	github.com/go-logr/logr v1.4.3 // indirect
 	github.com/godbus/dbus/v5 v5.0.4 // indirect
 	github.com/google/go-containerregistry v0.20.2 // indirect
 	github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510 // indirect
@@ -61,17 +62,18 @@ require (
 	github.com/vbatts/tar-split v0.11.3 // indirect
 	github.com/vishvananda/netns v0.0.4 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
-	golang.org/x/sync v0.10.0 // indirect
-	golang.org/x/text v0.21.0 // indirect
+	golang.org/x/sync v0.19.0 // indirect
+	golang.org/x/text v0.33.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	k8s.io/utils v0.0.0-20241104100929-3ea5e8cea738 // indirect
+	k8s.io/klog/v2 v2.140.0 // indirect
+	k8s.io/utils v0.0.0-20260210185600-b8788abfbbc2 // indirect
 )
 
 replace (
 	github.com/nsf/termbox-go => github.com/Harvester/termbox-go v1.1.1-0.20210318083914-8ab92204a400
 	github.com/rancher/wrangler => github.com/rancher/wrangler v1.1.1
-	k8s.io/api => k8s.io/api v0.32.6
-	k8s.io/apimachinery => k8s.io/apimachinery v0.32.6
-	k8s.io/client-go => k8s.io/client-go v0.32.6
-	k8s.io/kubelet => k8s.io/kubelet v0.32.6
+	k8s.io/api => k8s.io/api v0.36.0
+	k8s.io/apimachinery => k8s.io/apimachinery v0.36.0
+	k8s.io/client-go => k8s.io/client-go v0.36.0
+	k8s.io/kubelet => k8s.io/kubelet v0.36.0
 )
