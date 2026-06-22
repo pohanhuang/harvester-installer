@@ -46,18 +46,33 @@ func (cmd *Command) setupDefaults(osArgs []string) {
 	}
 
 	if cmd.Reader == nil {
-		tracef("setting default Reader as os.Stdin (cmd=%[1]q)", cmd.Name)
-		cmd.Reader = os.Stdin
+		if cmd.parent != nil && cmd.parent.Reader != nil {
+			tracef("inheriting Reader from parent (cmd=%[1]q)", cmd.Name)
+			cmd.Reader = cmd.parent.Reader
+		} else {
+			tracef("setting default Reader as os.Stdin (cmd=%[1]q)", cmd.Name)
+			cmd.Reader = os.Stdin
+		}
 	}
 
 	if cmd.Writer == nil {
-		tracef("setting default Writer as os.Stdout (cmd=%[1]q)", cmd.Name)
-		cmd.Writer = os.Stdout
+		if cmd.parent != nil && cmd.parent.Writer != nil {
+			tracef("inheriting Writer from parent (cmd=%[1]q)", cmd.Name)
+			cmd.Writer = cmd.parent.Writer
+		} else {
+			tracef("setting default Writer as os.Stdout (cmd=%[1]q)", cmd.Name)
+			cmd.Writer = os.Stdout
+		}
 	}
 
 	if cmd.ErrWriter == nil {
-		tracef("setting default ErrWriter as os.Stderr (cmd=%[1]q)", cmd.Name)
-		cmd.ErrWriter = os.Stderr
+		if cmd.parent != nil && cmd.parent.ErrWriter != nil {
+			tracef("inheriting ErrWriter from parent (cmd=%[1]q)", cmd.Name)
+			cmd.ErrWriter = cmd.parent.ErrWriter
+		} else {
+			tracef("setting default ErrWriter as os.Stderr (cmd=%[1]q)", cmd.Name)
+			cmd.ErrWriter = os.Stderr
+		}
 	}
 
 	if cmd.AllowExtFlags {
@@ -80,7 +95,21 @@ func (cmd *Command) setupDefaults(osArgs []string) {
 
 	if !cmd.HideVersion && isRoot {
 		tracef("appending version flag (cmd=%[1]q)", cmd.Name)
-		cmd.appendFlag(VersionFlag)
+		if !cmd.globaVersionFlagAdded {
+			var localVersionFlag Flag
+			if globalVersionFlag, ok := VersionFlag.(*BoolFlag); ok {
+				flag := *globalVersionFlag
+				localVersionFlag = &flag
+			} else {
+				localVersionFlag = VersionFlag
+			}
+
+			if !flagNamesInUse(cmd.allFlags(), localVersionFlag.Names()) {
+				cmd.appendFlag(localVersionFlag)
+				cmd.versionFlag = localVersionFlag
+				cmd.globaVersionFlagAdded = true
+			}
+		}
 	}
 
 	if cmd.PrefixMatchCommands && cmd.SuggestCommandFunc == nil {
@@ -130,25 +159,19 @@ func (cmd *Command) setupDefaults(osArgs []string) {
 		cmd.Metadata = map[string]any{}
 	}
 
-	if len(cmd.SliceFlagSeparator) != 0 {
-		tracef("setting defaultSliceFlagSeparator from cmd.SliceFlagSeparator (cmd=%[1]q)", cmd.Name)
-		defaultSliceFlagSeparator = cmd.SliceFlagSeparator
-	}
-
-	tracef("setting disableSliceFlagSeparator from cmd.DisableSliceFlagSeparator (cmd=%[1]q)", cmd.Name)
-	disableSliceFlagSeparator = cmd.DisableSliceFlagSeparator
-
 	cmd.setFlags = map[Flag]struct{}{}
 }
 
 func (cmd *Command) setupCommandGraph() {
 	tracef("setting up command graph (cmd=%[1]q)", cmd.Name)
 
-	for _, subCmd := range cmd.Commands {
-		subCmd.parent = cmd
-		subCmd.setupSubcommand()
-		subCmd.setupCommandGraph()
-	}
+	_ = cmd.Walk(func(sub *Command) error {
+		for _, subCmd := range sub.Commands {
+			subCmd.parent = sub
+			subCmd.setupSubcommand()
+		}
+		return nil
+	})
 }
 
 func (cmd *Command) setupSubcommand() {
@@ -173,6 +196,20 @@ func (cmd *Command) setupSubcommand() {
 
 	tracef("setting flag categories (cmd=%[1]q)", cmd.Name)
 	cmd.flagCategories = newFlagCategoriesFromFlags(cmd.allFlags())
+}
+
+func flagNamesInUse(flags []Flag, names []string) bool {
+	for _, name := range names {
+		for _, fl := range flags {
+			for _, flagName := range fl.Names() {
+				if flagName == name {
+					return true
+				}
+			}
+		}
+	}
+
+	return false
 }
 
 func (cmd *Command) hideHelp() bool {
@@ -200,15 +237,21 @@ func (cmd *Command) ensureHelp() {
 		}
 
 		if HelpFlag != nil {
-			// TODO need to remove hack
-			if hf, ok := HelpFlag.(*BoolFlag); ok {
-				hf.applied = false
-				hf.hasBeenSet = false
-				hf.Value = false
-				hf.value = nil
+			if !cmd.globaHelpFlagAdded {
+				var localHelpFlag Flag
+				if globalHelpFlag, ok := HelpFlag.(*BoolFlag); ok {
+					flag := *globalHelpFlag
+					localHelpFlag = &flag
+				} else {
+					localHelpFlag = HelpFlag
+				}
+
+				tracef("appending HelpFlag (cmd=%[1]q)", cmd.Name)
+				cmd.appendFlag(localHelpFlag)
+				cmd.globaHelpFlagAdded = true
+			} else {
+				tracef("HelpFlag already added, skip (cmd=%[1]q)", cmd.Name)
 			}
-			tracef("appending HelpFlag (cmd=%[1]q)", cmd.Name)
-			cmd.appendFlag(HelpFlag)
 		}
 	}
 }

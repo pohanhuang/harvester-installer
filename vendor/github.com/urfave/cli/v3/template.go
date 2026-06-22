@@ -2,7 +2,7 @@ package cli
 
 var (
 	helpNameTemplate    = `{{$v := offset .FullName 6}}{{wrap .FullName 3}}{{if .Usage}} - {{wrap .Usage $v}}{{end}}`
-	argsTemplate        = `{{if .Arguments}}{{range .Arguments}}{{.Usage}}{{end}}{{end}}`
+	argsTemplate        = `{{if .Arguments}}{{range .Arguments}}{{.Usage}} {{end}}{{end}}`
 	usageTemplate       = `{{if .UsageText}}{{wrap .UsageText 3}}{{else}}{{.FullName}}{{if .VisibleFlags}} [options]{{end}}{{if .VisibleCommands}} [command [command options]]{{end}}{{if .ArgsUsage}} {{.ArgsUsage}}{{else}}{{if .Arguments}} {{template "argsTemplate" .}}{{end}}{{end}}{{end}}`
 	descriptionTemplate = `{{wrap .Description 3}}`
 	authorsTemplate     = `{{with $length := len .Authors}}{{if ne 1 $length}}S{{end}}{{end}}:
@@ -107,7 +107,9 @@ COMMANDS:{{template "visibleCommandTemplate" .}}{{end}}{{if .VisibleFlagCategori
 
 OPTIONS:{{template "visibleFlagCategoryTemplate" .}}{{else if .VisibleFlags}}
 
-OPTIONS:{{template "visibleFlagTemplate" .}}{{end}}
+OPTIONS:{{template "visibleFlagTemplate" .}}{{end}}{{if .VisiblePersistentFlags}}
+
+GLOBAL OPTIONS:{{template "visiblePersistentFlagTemplate" .}}{{end}}
 `
 
 var FishCompletionTemplate = `# {{ .Command.Name }} fish shell completion
