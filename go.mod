@@ -17,9 +17,9 @@ require (
 	github.com/tredoe/osutil v1.5.0
 	github.com/urfave/cli/v3 v3.4.1
 	github.com/vishvananda/netlink v1.2.1-beta.2
-	golang.org/x/crypto v0.31.0
-	golang.org/x/net v0.33.0
-	golang.org/x/sys v0.28.0
+	golang.org/x/crypto v0.53.0
+	golang.org/x/net v0.55.0
+	golang.org/x/sys v0.46.0
 	gopkg.in/ini.v1 v1.67.0
 	gopkg.in/yaml.v3 v3.0.1
 	k8s.io/apimachinery v0.32.6
@@ -61,8 +61,8 @@ require (
 	github.com/vbatts/tar-split v0.11.3 // indirect
 	github.com/vishvananda/netns v0.0.4 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
-	golang.org/x/sync v0.10.0 // indirect
-	golang.org/x/text v0.21.0 // indirect
+	golang.org/x/sync v0.21.0 // indirect
+	golang.org/x/text v0.38.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	k8s.io/utils v0.0.0-20241104100929-3ea5e8cea738 // indirect
 )
